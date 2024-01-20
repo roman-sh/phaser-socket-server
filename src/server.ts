@@ -30,7 +30,8 @@ const players: Players = {}
 
 const star = {
   x: Math.floor(Math.random() * 700) + 50,
-  y: Math.floor(Math.random() * 500) + 50
+  y: Math.floor(Math.random() * 500) + 50,
+  lastCollected: 0
 }
 
 const scores = {
@@ -75,7 +76,11 @@ io.on('connection', socket => {
     socket.broadcast.emit('playerMoved', players[socket.id])
   })
 
-  socket.once('starCollected', () => {
+  socket.on('starCollected', () => {
+    // event triggered multiple times for some reason
+    if (Date.now() - star.lastCollected < 500) return
+    star.lastCollected = Date.now()
+
     if (players[socket.id].team === Team.RED) {
       scores.red += 10
     } else {
