@@ -1,11 +1,13 @@
 import { Server } from 'socket.io'
 
-const io = new Server({
-  cors: {
-    origin: 'http://localhost:5173',
-    methods: ['GET', 'POST']
-  }
-})
+const io = new Server(
+  // {
+  //   cors: {
+  //     origin: 'http://localhost:5173',
+  //     methods: ['GET', 'POST']
+  //   }
+  // }
+)
 
 enum Team {
   RED = 'red',
