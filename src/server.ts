@@ -1,12 +1,12 @@
 import { Server } from 'socket.io'
 
 const io = new Server(
-  // {
-  //   cors: {
-  //     origin: 'http://localhost:5173',
-  //     methods: ['GET', 'POST']
-  //   }
-  // }
+  {
+    cors: {
+      origin: 'https://star-homka.netlify.app',
+      methods: ['GET', 'POST']
+    }
+  }
 )
 
 enum Team {
