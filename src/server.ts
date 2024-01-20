@@ -75,7 +75,7 @@ io.on('connection', socket => {
     socket.broadcast.emit('playerMoved', players[socket.id])
   })
 
-  socket.on('starCollected', () => {
+  socket.once('starCollected', () => {
     if (players[socket.id].team === Team.RED) {
       scores.red += 10
     } else {
